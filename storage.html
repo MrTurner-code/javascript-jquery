@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storage</title>
+</head>
+
+<body>
+    <label>Clé de la mémoire locale :
+        <input type="text" title='clé' id="cle">
+    </label>
+    <label>Valeur de la mémoire locale :
+        <input type="text" title='valeur' id="valeur">
+    </label>
+    <input type="button" value="Set localStorage" onclick="onclickSetLocalStorage()">
+    <input type="button" value="Set sessionStorage" onclick="onclickSetSessionStorage();">
+
+    <input type="button" value="Get localStorage" onclick="onclickGetLocalStorage();">
+    <input type="button" value="Get sessionStorage" onclick="onclickGetSessionStorage();">
+
+    <input type="button" value="reset localStorage" onclick="onclickResetLocalStorage();">
+    <input type="button" value="reset sessionStorage" onclick="onclickResteSessionStorage();">
+
+    <input type="button" value="Clear localStorage" onclick="onclickClearLocalStorage();">
+    <input type="button" value="Clear sessionStorage" onclick="onclickClearSessionStorage();">
+
+    <script type="text/javascript">
+        function onclickSetLocalStorage(){
+            var cle = document.getElementById('cle').value;
+            var valeur = document.getElementById('valeur').value;
+            localStorage.setItem(cle,valeur);
+        }
+        function onclickSetSessionStorage(){
+            var cle = document.getElementById('cle').value;
+            var valeur = document.getElementById('valeur').value;
+            sessionStorage.setItem(cle,valeur);
+        }
+        function onclickGetLocalStorage(){
+            var cle = document.getElementById('cle').value;
+            alert(localStorage.getItem(cle));
+        }
+        function onclickGetSessionStorage(){
+            var cle = document.getElementById('cle').value;
+            alert(sessionStorage.getItem(cle));
+        }
+        function onclickResetLocalStorage(){
+            var cle = document.getElementById('cle').value;
+            localStorage.removeItem(cle);
+        }
+        function onclickResetSessionStorage(){
+            var cle = document.getElementById('cle').value;
+            sessionStorage.removeItem(cle);
+        }
+        function onclickClearLocalStorage(){
+            localStorage.clear();
+        }
+        function onclickClearSessionStorage(){
+            sessionStorage.clear();
+        }
+    </script>
+</body>
+
+</html>

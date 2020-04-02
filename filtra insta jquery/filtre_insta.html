@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <title>Filtre insta</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous"></script>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      #content {
+        width: 500px;
+        display: block;
+        margin: auto;
+        padding: 30px 20px;
+        background-color: #eee;
+      }
+      #picture {
+        width: 100%;
+        margin-bottom: 20px;
+      }
+      input[type="url"] {
+        width: 100%;
+        margin-bottom: 20px;
+        padding: 10px 5px;
+        border: none;
+      }
+      h1 {
+        text-align: center;
+        text-transform: uppercase;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="content">
+      <h1>Filtre insta</h1>
+      <form>
+        <input type="url" oninput="changeImage(this.value)" placeholder="Adresse de l'image">
+      </form>
+      <img src="../sp.jpg" id="picture">
+      <form>
+        <div class="filter">
+          <label>Niveau de gris : </label>
+          <input type="range" oninput="applyFilter('grayscale', this.value)" min="0" max="100" value="0">
+        </div>
+        <div class="filter">
+          <label>Contraste : </label>
+          <input type="range" oninput="applyFilter('contrast', this.value)" min="0" max="200" value="100">
+        </div>
+        <div class="filter">
+          <label>Saturation : </label>
+          <input type="range" oninput="applyFilter('saturate', this.value)" min="0" max="200" value="100">
+        </div>
+        <div class="filter">
+          <label>Luminosité : </label>
+          <input type="range" oninput="applyFilter('brightness', this.value)" min="0" max="200" value="100">
+        </div>
+        <div class="filter">
+          <label>Flou : </label>
+          <input type="range" oninput="applyFilter('blur', this.value)" min="0" max="10" value="0">
+        </div>
+      </form>
+    </div>
+    <script type="text/javascript" src="js/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+</head>
+
+<body>
+    <div id="container">
+        <form action="">
+            <input type="radio" id="male" name="gender" value="male">
+            <label for="male">Homme</label><br>
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">Femme</label><br>
+            <label for="name">Quel est votre nom ?</label>
+            <input type="text" id="name" name="name">
+            <label for="name">Quel est votre prénom ?</label>
+            <input type="text" id="firstname" name="firstname">
+            <label for="birthday"> Votre ddate de naissance</label>
+            <input type="date" id="birthday" name="birthday">
+            <input type="submit" onclick="signup();">
+        </form>
+    </div>
+
+    <script type="text/javascript">
+        var listPerson = {}
+        cptr = 0
+        class people {
+            contructor(_gender, _name, _firstName, _birthday) {
+                this.gender = _gender;
+                this.name = _name;
+                this.firstName = _firstName;
+                this.birthday = _birthday;
+
+            }
+            afficher() {
+                console.log(
+                    this.gender + ' ' + this.name + ' ' + this.firstName + ' ' + this.birthday
+                )
+            }
+            setFirstname(_firstname) {
+                this.firstName = _firstname;
+            }
+            setName(_name) {
+                this.name = _name;
+            }
+            setBirthday(_birthday) {
+                this.birthday = _birthday;
+            }
+            setGender(_gender) {
+                this.gender = _gender
+            }
+            get() {
+                return this.gender + " " + this.name + ' ' + this.firstName + ' ' + this.birthday;
+            }
+            getFirstname() {
+                return this.firstName;
+            }
+            getName() {
+                return this.name;
+            }
+            getBirthday() {
+                return this.birthday;
+            }
+            getGender() {
+                return this.gender;
+            }
+            getInitiales() {
+                return this.firstname[0] + this.name[0];
+            }
+            signup() {
+                if (document.getElementById('male').checked) {
+                    var gender = 'homme'
+                } else if (document.getElementById('female').checked) {
+                    var gender = 'femme'
+                }
+                let name = document.getElementById('name');
+                let firstName = document.getElementById('firstname');
+                let birthday = document.getElementById('birthday');
+                var qqun = new people(gender, name, firstName, birthday);
+                afficher(quun);
+            }
+        }
+
+    </script>
+</body>
+
+</html>

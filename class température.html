@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+</head>
+
+<body>
+    <div id="container">
+
+    </div>
+
+    <script type="text/javascript">
+        // réalisation d'une classe
+        // gestion de la température
+        // uniquement en degré celsius
+        // déclaration de la classe
+        // définition du constructeur
+        // Définir le/les attributs
+        // définir une méthode pour afficher
+        // Définir une méthode pour la conversion en string
+        // Définir tout les get et les set
+
+        // Tester en créant une instance
+
+        // Ajouter des méthodes permettant de manipuler les températures
+        class Temperature_en_degre {
+            constructor(_temp) {
+                this.temp = _temp;
+            }
+            afficher() {
+                console.log("la température est de " + this.temp + " degré Celsius");
+            }
+            getTemp() {
+                return this.temp + "°C";
+            }
+            get(){
+                return this.temp;
+            }
+            setTemp(_temp) {
+                this.temp = _temp;
+            }
+            farhenheit(){
+                var farenheit=((this.temp * 9/5) + 32);
+                console.log("la température est de " + farenheit + " degré farenheit");
+            }
+            kelvin(_temp){
+                var kelvin= this.temp + 273.15;
+                console.log("la température est de" + kelvin + "degré Kelvin");
+            }
+
+        }
+        var celsius = new Temperature_en_degre(12);
+        celsius.getTemp();
+        celsius.setTemp(14);
+        celsius.afficher();
+        celsius.farhenheit();
+        celsius.kelvin();
+
+
+    </script>
+</body>
+
+</html>
