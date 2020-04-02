@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<title>Calculatrice</title>
+		<style>
+		.affichage
+		{
+			display: inline-block;
+			width: 266px;
+			height: 50px;
+			margin-bottom: 10px;
+			font-size: 24px;
+		}
+		.chiffre
+		{
+			display: inline-block;
+			width: 50px;
+			height: 50px;
+			font-size: 24px;
+		}
+		.enbloc
+		{
+			display: block;
+			margin-bottom: 10px;
+		}
+		.egal
+		{
+			display: inline-block;
+			width: 266px;
+			height: 50px;
+			font-size: 24px;
+		}
+		.bloccentre
+		{
+			border-width: 1px;
+		}
+		.historique
+		{
+			font-size: 24px;
+		}
+		</style>
+	</head>
+	<body>
+		<br><br>
+		<center>
+			<input class="affichage" type="text" id="affichage">
+			<div class="enbloc">
+				<input class="chiffre" type="button" id="7" value="7" onclick="ajouter(7);">
+				<input class="chiffre" type="button" id="8" value="8" onclick="ajouter(8);">
+				<input class="chiffre" type="button" id="9" value="9" onclick="ajouter(9);">
+			</div>
+			<div class="enbloc">
+				<input class="chiffre" type="button" id="4" value="4" onclick="ajouter(4);">
+				<input class="chiffre" type="button" id="5" value="5" onclick="ajouter(5);">
+				<input class="chiffre" type="button" id="6" value="6" onclick="ajouter(6);">
+			</div>
+			<div class="enbloc">
+				<input class="chiffre" type="button" id="1" value="1" onclick="ajouter(1);">
+				<input class="chiffre" type="button" id="2" value="2" onclick="ajouter(2);">
+				<input class="chiffre" type="button" id="3" value="3" onclick="ajouter(3);">
+			</div>
+			<div class="enbloc">
+				<input class="chiffre" type="button" id="0" value="0" onclick="ajouter(0);">
+			</div>
+			<div class="enbloc">
+				<input class="chiffre" type="button" id="addition" value="+" onclick="addition();">
+				<input class="chiffre" type="button" id="soustraction" value="-" onclick="soustraction();">
+				<input class="chiffre" type="button" id="multiplication" value="*" onclick="multiplication();">
+				<input class="chiffre" type="button" id="division" value="/" onclick="division();">
+				<input class="chiffre" type="button" id="modulo" value="%" onclick="modulo();">
+			</div>
+			<div class="enbloc">
+				<input class="egal" type="button" id="egal" value="=" onclick="calculer();">
+			</div>
+			<div class="enbloc">
+				<input class="egal" type="button" id="reset" value="RESET" onclick="resetAffichage();">
+			</div>
+			<div id="historique">
+			</div>
+		</center>
+		<script type="text/javascript">
+			var valeur = 0;
+			var fonction = "";
+			var nombre = document.getElementById("affichage");
+			function ajouter(chiffre)
+			{
+				nombre.value += chiffre;
+			}
+			function resetAffichage()
+			{
+				nombre.value = "";
+			}
+			function addition()
+			{
+				valeur = nombre.value;
+				resetAffichage();
+				fonction = "addition";
+			}
+			function soustraction()
+			{
+				valeur = nombre.value;
+				resetAffichage();
+				fonction = "soustraction";
+			}
+			function multiplication()
+			{
+				valeur = nombre.value;
+				resetAffichage();
+				fonction = "multiplication";
+			}
+			function division()
+			{
+				valeur = nombre.value;
+				resetAffichage();
+				fonction = "division";
+			}
+			function modulo()
+			{
+				valeur = nombre.value;
+				resetAffichage();
+				fonction = "modulo";
+			}
+			function calculer()
+			{
+				var resultat = 0;
+				if(fonction == "addition")
+				{
+					resultat = parseInt(valeur) + parseInt(nombre.value);
+					resultatString = valeur + " + " + nombre.value;
+				}
+				if(fonction == "soustraction")
+				{
+					resultat = parseInt(valeur) - parseInt(nombre.value);
+					resultatString = valeur + " - " + nombre.value;
+				}
+				if(fonction == "multiplication")
+				{
+					resultat = parseInt(valeur) * parseInt(nombre.value);
+					resultatString = valeur + " * " + nombre.value;
+				}
+				if(fonction == "division")
+				{
+					resultat = parseInt(valeur) / parseInt(nombre.value);
+					resultatString = valeur + " / " + nombre.value;
+				}
+				if(fonction == "modulo")
+				{
+					resultat = parseInt(valeur) % parseInt(nombre.value);
+					resultatString = valeur + " % " + nombre.value;
+				}
+				nombre.value = resultat;
+				historique(resultatString + " = " + resultat);
+			}
+			Element.prototype.insertChildAtIndex = function(child, index)
+			{	//création d'une nouvelle fonction d'insertion d'une balise à un index (ou ordre) déterminé par l'utilisateur/programmeur
+			//ici, les insertions se font en ordre inverse, soit, les derniers calculs aparaissent en premier sur la liste historique
+				if(!index)
+				{
+					index = 0;
+				}
+				if(index >= this.children.length)
+				{
+					this.appendChild(child);
+				}
+				else
+				{
+					this.insertBefore(child, this.children[index]);
+				}
+			}
+			function historique(info)
+			{
+				var child = document.createElement('P');
+				var texte = document.createTextNode(info);
+				child.appendChild(texte);
+				var parent = document.getElementById("historique");
+				parent.insertChildAtIndex(child, 0); //insertion d'une balise à une position donnée, ici en première position, soit 0
+			}
+			
+			
+		</script>
+	</body>
+</html>
